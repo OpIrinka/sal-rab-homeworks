@@ -33,9 +33,9 @@
 //    }
 // }
 
-function sendRequest(name, phone, address, goods, sum) {
+function sendRequest(client, order, goods) {
     let data = {
-        client: {name, phone}
+        client: {name, phone},
         goods: [],
         order: {address, sum}
     };
@@ -46,25 +46,24 @@ function sendRequest(name, phone, address, goods, sum) {
         data.goods.push(goods[i].title + ", " + goods[i].count);
     };
 
-    let street = prompt('Улица');
-    let house = prompt('Дом');
-    let entrance = prompt('Подъезд');
-    let flore = prompt('Этаж');
-    let flat = prompt('Квартира');
-    
-    const address = {"ул. " + address.street + ", дом " + address.house + " , " + address.entrance + " подъезд," + address.floor + " этаж, " + "кв. " + address.flat
+    const address = {
+        street, house, entrance, floor, flat
     };
     
-    let name = prompt('Введите имя');
-    let phone = prompt(`Введите телефон`);
-    const client = {
-        name, phone
+    let user = prompt('Введите имя');
+    const name ={
+        user
+    };
+    let userPhone = prompt(`Введите телефон`);
+    const phone ={
+        userPhone
     };
 
-    data.order.address = address;
-    data.order.sum = name + phone + address + goods + sum;
+    data.order.address = "ул. "`${street}` + ", дом " + `${house}` + ", " + `${entrance}` + " подъезд, " + `${floor}` + " этаж, кв. " + `${flat}`;
+    data.order.sum = sum;
+    data.client = `${name}` + " " + `${phone}`;
 
-    let jsonData = JSON.stringify({data}); // добавила фигурные - вложенный объект
+    let jsonData = JSON.stringify({data});
 
     return jsonData;
 }
