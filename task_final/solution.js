@@ -44,21 +44,25 @@ function sendRequest(name, phone, address, goods, sum) {
 
     for (let i = 0; i < countOfGoods; i ++) {
         data.goods.push(goods[i].title + ", " + goods[i].count);
-    }
+    };
+
+    let street = prompt('Улица');
+    let house = prompt('Дом');
+    let entrance = prompt('Подъезд');
+    let flore = prompt('Этаж');
+    let flat = prompt('Квартира');
+    
+    const address = {"ул. " + address.street + ", дом " + address.house + " , " + address.entrance + " подъезд," + address.floor + " этаж, " + "кв. " + address.flat
+    };
+    
+    let name = prompt('Введите имя');
+    let phone = prompt(`Введите телефон`);
+    const client = {
+        name, phone
+    };
 
     data.order.address = address;
     data.order.sum = name + phone + address + goods + sum;
-
-    let client = prompt('Введите имя');
-    const user = {
-        client
-    };
-
-    let address = prompt('Введите адрес');
-    const userAddress = {
-        address
-    };
-
 
     let jsonData = JSON.stringify({data}); // добавила фигурные - вложенный объект
 
