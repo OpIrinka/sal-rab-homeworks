@@ -22,7 +22,7 @@ function renderProductsCards(json) {
     // Запишите в переменную length значение свойства products.length
     let length = products.length;
     // Напишите цикл, в котором перебираете все products от 0 до (length - 1)
-    for (let i = 0; i < length; i++) {
+    for (let i = 0; i < (length - 1); i++) {
         // и выполняете addProduct с каждым элементом массива products (передавая элемент массива как аргумент)
         addProduct(products[i]);
     }
